@@ -1,0 +1,6 @@
+- hosts: localhost
+  tasks:
+    - name: Copy using the 'content' for inline data
+      copy:
+        content: 'Shay was here'
+        dest: '/tmp/shay.txt'
