@@ -1,4 +1,4 @@
-- hosts:
+- hosts: localhost
     tasks:
     - name: Copy using the 'content' for inline data
       copy:
