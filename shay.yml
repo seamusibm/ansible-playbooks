@@ -1,8 +1,6 @@
 - hosts: "{{ the_host }}"
   tasks:
-    - copy: content="shay was here" dest=/tmp/shat.txt
-    - shell: ip a
-      register: ip_info
-    - name: Print input
-      debug:
-        msg: "info is {{ ip_info }}"
+    - name: Copy using the 'content' for inline data
+      copy:
+        content: 'Shay was here'
+        dest: '/tmp/shay.txt'
