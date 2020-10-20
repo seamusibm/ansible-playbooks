@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: "{{ the_host | default("localhost") }}"
   tasks:
     - copy: content="shay was here" dest=/tmp/shat.txt
     - shell: ip a
@@ -6,8 +6,3 @@
     - name: Print input
       debug:
         msg: "info is {{ ip_info }}"
-    - shell: "apt install apache2"
-      register: install_info
-    - name: Print input2
-      debug:
-        msg: "output is  {{ install_info }}"
