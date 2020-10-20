@@ -1,4 +1,4 @@
-- hosts: "{{ the_host | default("localhost") }}"
+- hosts: "{{ the_host }}"
   tasks:
     - copy: content="shay was here" dest=/tmp/shat.txt
     - shell: ip a
