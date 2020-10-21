@@ -1,0 +1,17 @@
+
+- hosts: ibm
+  tasks:
+    - name: install apache on the vm
+      shell: apt update -y && apt install apache2 -y
+      register: install_output
+      failed_when: install_output.rc != 0   
+
+    - name: change apache port from 80 to 8081
+      shell: sed -i 's/80/8081/g' /etc/apache2/ports.conf
+      register: change_port_output
+      failed_when: change_port_output.rc != 0  
+      
+    - name: restart apache service 
+      shell: systemctl restart apache2
+      register: apache_restart_output
+      failed_when: apache_restart_output.rc != 0  
