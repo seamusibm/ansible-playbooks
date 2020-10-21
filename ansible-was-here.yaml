@@ -1,0 +1,6 @@
+- hosts: ibm
+  tasks:
+    - name: Print 'Ansible was here' to file
+      copy:
+        content: 'Ansible was here'
+        dest: '/tmp/ansible-example.txt'
