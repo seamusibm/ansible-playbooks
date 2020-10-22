@@ -6,8 +6,8 @@
       register: install_output
       failed_when: install_output.rc != 0   
 
-    - name: change apache port from 80 to 8081
-      shell: sed -i 's/80/8081/g' /etc/apache2/ports.conf
+    - name: change apache port from 80 to "{{ the_port }}"
+      shell: sed -i 's/80/"{{ the_port }}"/g' /etc/apache2/ports.conf
       register: change_port_output
       failed_when: change_port_output.rc != 0  
       
