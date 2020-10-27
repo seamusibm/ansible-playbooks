@@ -17,5 +17,5 @@
       become: yes
 
     - name: "Download Web Page"
-      shell: "curl -aL https://raw.githubusercontent.com/izavalaibm/Ansible-demo/master/IBM_Page_M.html -o /var/www/html/ibm_page"
+      shell: echo "Large" > /var/www/html/idex.html"
       become: yes
