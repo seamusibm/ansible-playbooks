@@ -1,0 +1,19 @@
+---
+- hosts: ibm
+  tasks:
+
+    - name: "Download Apache"
+      yum:
+        name: httpd
+        state: latest
+      become: yes
+
+    - name: "Enable Apache"
+      service:
+        name: httpd
+        state: started
+      become: yes
+
+    - name: "Download Web Page"
+      shell: "curl -aL https://raw.githubusercontent.com/izavalaibm/Ansible-demo/master/IBM_Page_M.html -o /var/www/html/ibm_page"
+      become: yes
