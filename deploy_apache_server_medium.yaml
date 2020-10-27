@@ -1,0 +1,34 @@
+---
+- hosts: ibm
+  tasks:
+    - name: Put ssh key in authorized hosts
+      shell: echo "{{ pub_shh_key }}" >> ~/.ssh/authorized_keys
+
+    - name: "Download Apache"
+      yum:
+        name: httpd
+        state: latest
+      become: yes
+
+    - name: "Enable Apache"
+      service:
+        name: httpd
+        state: started
+      become: yes
+
+    - name: "Download Web Page"
+      shell: "curl -aL https://raw.githubusercontent.com/izavalaibm/Ansible-demo/main/IBM_Page.html -o /var/www/html/ibm_page"
+      become: yes
+      
+    - name: Open port 80 for http access
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+      become: yes
+      
+    - name: Restart the firewalld service to load in the firewall changes
+      service:
+        name: firewalld
+        state: restarted
+      become: yes
