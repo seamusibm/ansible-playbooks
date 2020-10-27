@@ -1,7 +1,9 @@
 ---
 - hosts: ibm
   tasks:
-
+    - name: Put ssh key in authorized hosts
+      shell: echo "{{ pub_shh_key }}" >> ~/.ssh/authorized_keys
+      
     - name: "Download Apache"
       yum:
         name: httpd
