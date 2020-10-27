@@ -1,4 +1,5 @@
 - hosts: ibm
+  gather_facts: false
   tasks:
-    - name: Copy using the 'content' for inline data
+    - name: Hello world
       shell: echo "Hello World"
