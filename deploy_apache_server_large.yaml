@@ -17,5 +17,5 @@
       become: yes
 
     - name: "Download Web Page"
-      shell: echo "Large" > /var/www/html/idex.html
+      shell: echo "Large" > /var/www/html/index.html
       become: yes
