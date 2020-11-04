@@ -17,8 +17,8 @@
     
     - name: Log out of OCP
       shell: oc logout
-      register: output
+      register: output3
      
     - debug:
-        msg: "{{ output.stdout_lines }}"
+        msg: "{{ output3.stdout_lines }}"
         
