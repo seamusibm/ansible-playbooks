@@ -2,9 +2,23 @@
   gather_facts: false
   tasks:
     - name: Log into OCP
-      shell: oc get PlacementRule -A
+      shell: "{{ oc_login_command }}"
       register: output
      
     - debug:
         msg: "{{ output.stdout_lines }}"
-      
+       
+    - name: fix route 
+      shell: oc expose svc/libertyapp -n libertyapp-project
+      register: output2
+     
+    - debug:
+        msg: "{{ output2.stdout_lines }}"      
+    
+    - name: Log out of OCP
+      shell: oc logout
+      register: output
+     
+    - debug:
+        msg: "{{ output.stdout_lines }}"
+        
