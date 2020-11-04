@@ -2,7 +2,7 @@
   gather_facts: false
   tasks:
     - name: Log into OCP
-      shell: oc whoami
+      shell: oc get PlacementRule -A
       register: output
      
     - debug:
