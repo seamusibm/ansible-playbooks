@@ -1,0 +1,6 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Log into OCP
+      shell: oc whoami
+      
