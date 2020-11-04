@@ -6,5 +6,5 @@
       register: output
      
     - debug:
-        msg: "{{ output.sdtout_lines }}"
+        msg: "{{ output.stdout_lines }}"
       
