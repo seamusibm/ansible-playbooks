@@ -3,4 +3,8 @@
   tasks:
     - name: Log into OCP
       shell: oc whoami
+      register: output
+     
+    - debug:
+        msg: "{{ output.sdtout_lines }}"
       
