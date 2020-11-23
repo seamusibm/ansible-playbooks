@@ -8,3 +8,6 @@
      
     - debug:
         msg: "{{ output.stdout_lines }}"
+        
+ #   - name: Log into OCP
+ #     shell: kubectl create configmap NAME [--from-file=[key=]source] [--from-literal=key1=value1] [--dry-run=server|client|none]
