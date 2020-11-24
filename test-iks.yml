@@ -9,11 +9,8 @@
       shell: chmod +x ./kubectl
       
     - name: Log into OCP
-      shell: cat "{{ kubeconifg }}"
-      register: output
+      shell: echo "{{ kubeconifg }}" > kubeconfig && export KUBECONFIG=./kubeconfig
      
-    - debug:
-        msg: "{{ output.stdout_lines }}"
+    - name: Create Configmap
+      shell: ./kubectl create configmap demo-configmap --from-literal=installed-by-mcm=true --from-literal=configured-by-ansible=true
         
- #   - name: Log into OCP
- #     shell: kubectl create configmap NAME [--from-file=[key=]source] [--from-literal=key1=value1] [--dry-run=server|client|none]
