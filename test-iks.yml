@@ -2,6 +2,12 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+     - name: get kubectl
+      shell: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+    
+    - name: install kubectl
+      shell: chmod +x ./kubectl
+      
     - name: Log into OCP
       shell: cat "{{ kubeconifg }}"
       register: output
