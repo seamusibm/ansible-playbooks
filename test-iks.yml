@@ -2,7 +2,7 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-     - name: get kubectl
+    - name: get kubectl
       shell: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
     
     - name: install kubectl
