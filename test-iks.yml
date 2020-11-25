@@ -23,5 +23,12 @@
      
     - debug:
         msg: "{{ output.stdout_lines }}"
+        
+    - name: Create Configmap
+      shell: ./kubectl create configmap demo-configmap --from-literal=installed-by-mcm=true --from-literal=configured-by-ansible=true -n default
+      register: output
+     
+    - debug:
+        msg: "{{ output.stdout_lines }}"
 #      ./kubectl create namespace test-ansible && ./kubectl create configmap demo-configmap --from-literal=installed-by-mcm=true --from-literal=configured-by-ansible=true -n test-ansible
         
