@@ -2,12 +2,6 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    - shell: echo "{{ kubeconfig }}"
-      register: output
-     
-    - debug:
-        msg: "{{ output.stdout_lines }}"
-  
     - name: get kubectl
       shell: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
     
@@ -17,25 +11,13 @@
     - name: Log into OCP
       shell: echo "{{ kubeconfig }}" | base64 -d > kubeconfig && export KUBECONFIG=./kubeconfig
      
-    - name: Create Configmap
+    - name: Set Context
       shell: ./kubectl config set-context test-iks-cluster --cluster=test-iks-cluster --namespace=default
-      register: output
-     
-    - debug:
-        msg: "{{ output.stdout_lines }}"
 
-    - name: Create Configmap
-      shell: ./kubectl create namespace test-ansible
+    - name: Run example kubectl command
+      shell: ./kubectl config get-contexts
       register: output
      
     - debug:
         msg: "{{ output.stdout_lines }}"
-        
-    - name: Create Configmap
-      shell: ./kubectl create configmap demo-configmap --from-literal=installed-by-mcm=true --from-literal=configured-by-ansible=true -n test-ansible
-      register: output
-     
-    - debug:
-        msg: "{{ output.stdout_lines }}"
-#      ./kubectl create namespace test-ansible && ./kubectl create configmap demo-configmap --from-literal=installed-by-mcm=true --from-literal=configured-by-ansible=true -n test-ansible
-        
+ 
