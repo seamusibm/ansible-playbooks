@@ -18,6 +18,6 @@
       shell: echo "{{ kubeconfig }}" > kubeconfig && export KUBECONFIG=./kubeconfig
      
     - name: Create Configmap
-      shell: ./kubectl config current-context
+      shell: ./kubectl config get-contexts
 #      ./kubectl create namespace test-ansible && ./kubectl create configmap demo-configmap --from-literal=installed-by-mcm=true --from-literal=configured-by-ansible=true -n test-ansible
         
