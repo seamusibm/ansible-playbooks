@@ -16,21 +16,3 @@
  
     - name: Run example kubectl command
       shell: ./kubectl config use-context test-iks-cluster
-      register: output
-     
-    - debug:
-        msg: "{{ output.stdout_lines }}"
-   
-    - name: Run example kubectl command
-      shell: ./kubectl config get-contexts
-      register: output
-     
-    - debug:
-        msg: "{{ output.stdout_lines }}"
-        
-    - name: Run example kubectl command
-      shell: ./kubectl get pods
-      register: output
-     
-    - debug:
-        msg: "{{ output.stdout_lines }}"
