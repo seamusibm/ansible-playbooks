@@ -19,5 +19,9 @@
      
     - name: Create Configmap
       shell: ./kubectl config get-contexts
+      register: output
+     
+    - debug:
+        msg: "{{ output.stdout_lines }}"
 #      ./kubectl create namespace test-ansible && ./kubectl create configmap demo-configmap --from-literal=installed-by-mcm=true --from-literal=configured-by-ansible=true -n test-ansible
         
