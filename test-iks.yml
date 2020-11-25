@@ -18,7 +18,7 @@
       shell: echo "{{ kubeconfig }}" | base64 -d > kubeconfig && export KUBECONFIG=./kubeconfig
      
     - name: Create Configmap
-      shell: ./kubectl config use-context test-iks-cluster
+      shell: ./kubectl config set-context test-iks-cluster --cluster=test-iks-cluster --namespace=default
       register: output
      
     - debug:
