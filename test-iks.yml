@@ -21,3 +21,10 @@
     - debug:
         msg: "{{ output.stdout_lines }}"
  
+    - name: Run example kubectl command
+      shell: ./kubectl config use-context test-iks-cluster
+      register: output
+     
+    - debug:
+        msg: "{{ output.stdout_lines }}"
+   
