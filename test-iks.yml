@@ -7,12 +7,6 @@
      
     - debug:
         msg: "{{ output.stdout_lines }}"
-        
-    - shell: echo "{{ cluster_certificate_authority }}"
-      register: output
-     
-    - debug:
-        msg: "{{ output.stdout_lines }}"
   
     - name: get kubectl
       shell: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -21,7 +15,7 @@
       shell: chmod +x ./kubectl
       
     - name: Log into OCP
-      shell: echo "{{ cluster_certificate_authority }}" | base64 -d > ca-lon02-test-iks-cluster.pem && echo "{{ kubeconfig }}" | base64 -d > kubeconfig && export KUBECONFIG=./kubeconfig
+      shell: echo "{{ kubeconfig }}" | base64 -d > kubeconfig && export KUBECONFIG=./kubeconfig
      
     - name: Create Configmap
       shell: ./kubectl config get-contexts
