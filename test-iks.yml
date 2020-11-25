@@ -2,7 +2,7 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    - shell: echo "{{ kubeconifg }}"
+    - shell: echo "{{ kubeconfig }}"
       register: output
      
     - debug:
@@ -15,7 +15,7 @@
       shell: chmod +x ./kubectl
       
     - name: Log into OCP
-      shell: echo "{{ kubeconifg }}" > kubeconfig && export KUBECONFIG=./kubeconfig
+      shell: echo "{{ kubeconfig }}" > kubeconfig && export KUBECONFIG=./kubeconfig
      
     - name: Create Configmap
       shell: ./kubectl create configmap demo-configmap --from-literal=installed-by-mcm=true --from-literal=configured-by-ansible=true
