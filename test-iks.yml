@@ -18,7 +18,7 @@
       shell: echo "{{ kubeconfig }}" | base64 -d > kubeconfig && export KUBECONFIG=./kubeconfig
      
     - name: Create Configmap
-      shell: ./kubectl auth can-i 
+      shell: ./kubectl auth can-i *
       register: output
      
     - debug:
